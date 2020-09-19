@@ -15,7 +15,6 @@
   <script src='/fullcalendar/main.js'></script>
   <script src="/jq-paginator/dist/jq-paginator.min.js"></script>
   <script>
-
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -64,6 +63,38 @@
     });
         
   </script>
+  <script>
+    //   add new suggestions
+      $(document).ready(function () {
+          let suggestion = $('#suggestion')
+          $('#create_suggestion').on('click', function() {
+              console.log(suggestion)
+              let html = `<div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
+                        <form action="">
+                            <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
+                                <li>
+                                    Topic: <span>NBA</span>    
+                                </li>
+                                <hr>
+                                <li>
+                                    Type of Class: <span>Group</span>  
+                                </li>
+                                <hr>
+                                <li>
+                                    Total Seats: <span>10</span>
+                                </li>
+                                <hr>
+                                <li>
+                                    Taken: <span>5</span>    
+                                </li>
+                            </ul>
+                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
+                        </form>
+                    </div>`;
+                suggestion.append(html);
+          })
+      })
+  </script>
 </head>
 
 <body>
@@ -83,27 +114,27 @@
             <div id="modalBody" class="modal-body">
                 <h5>Suggestions</h5>
                 <hr>
-                <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
+                <div id="suggestion" class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
                     <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
                         <form action="">
                             <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
                                 <li>
-                                    <span>Topic: NBA</span>    
+                                    Topic: <span>NBA</span>    
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Type of Class: Group</span>  
+                                    Type of Class: <span>Group</span>  
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Total Seats: 10</span>
+                                    Total Seats: <span>10</span>
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Taken: 5</span>    
+                                    Taken: <span>5</span>    
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary form-control">RSVP</button>
+                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
                         </form>
                     </div>
 
@@ -111,22 +142,22 @@
                         <form action="">
                             <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
                                 <li>
-                                    <span>Topic: Golf</span>    
+                                    Topic: <span>Golf</span>    
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Type of Class: Small Group</span>  
+                                    Type of Class: <span>Small Group</span>  
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Total Seats: 6</span>
+                                    Total Seats: <span>6</span>
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Taken: 2</span>    
+                                    Taken: <span>2</span>    
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary form-control">RSVP</button>
+                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
                         </form>
                     </div>
 
@@ -134,22 +165,22 @@
                         <form action="">
                             <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
                                 <li>
-                                    <span>Topic: NFL</span>    
+                                    Topic: <span>NFL</span>    
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Type of Class: Private</span>  
+                                    Type of Class: <span>Private</span>  
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Total Seats: 1</span>
+                                    Total Seats: <span>1</span>
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Taken: 0</span>    
+                                    Taken: <span>0</span>    
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary form-control">RSVP</button>
+                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
                         </form>
                     </div>
 
@@ -157,22 +188,22 @@
                         <form action="">
                             <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
                                 <li>
-                                    <span>Topic: NFL</span>    
+                                    Topic: <span>NFL</span>    
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Type of Class: Private</span>  
+                                    Type of Class: <span> Private</span>  
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Total Seats: 1</span>
+                                    Total Seats: <span> 1</span>
                                 </li>
                                 <hr>
                                 <li>
-                                    <span>Taken: 0</span>    
+                                    Taken:<span> 0</span>    
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary form-control">RSVP</button>
+                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
                         </form>
                     </div>
                 </div>
@@ -182,13 +213,13 @@
                 <hr>
 
                 <div class="col-md-12" style="margin:auto">
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="form-group row" style="margin-top: 25px;">
                             <div class="col-sm-4"  style="font-size: large; ">
                                 <label for="class_topic" >Topic</label>
                             </div>
                             <div class="col-md-8"> 
-                                <input type="text" class="form-control" id="topic" placeholder="Enter the topic you are interested in">
+                                <input type="text" class="form-control" id="topic" placeholder="Enter the topic you are interested in" minlength="2" maxlength="20" required>
                             </div>
                         </div>
                         <hr>
@@ -196,7 +227,7 @@
                             <div class="col-sm-4" style="font-size: large; ">
                                 <label for="class_type" >Class Type</label>
                             </div>
-                            <div class="col-md-8">  <select name="suggest_class_type" id="suggest_class_type" class="form-control">
+                            <div class="col-md-8">  <select name="suggest_class_type" id="suggest_class_type" class="form-control" required>
                                 <option value="" disabled selected hidden>Select The Class Type</option>
                                 <option value="Group Lesson">Group Lesson</option>
                                 <option value="Small Group">Small Group</option>
@@ -214,7 +245,7 @@
                             </div>
                         </div>
                         <hr> -->
-                        <button type="button" class="btn btn-primary pull-right" style="float: right;">Create the suggestion</button>
+                        <button id="create_suggestion" type="submit" class="btn btn-primary pull-right" style="float: right;">Create the suggestion</button>
                     </form>
                 </div>
 
@@ -273,19 +304,19 @@
                         <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 10px; border-radius: 1rem; margin-bottom: 10px; ">
                         <ul style="list-style:none; padding: 0; margin-left: 10px; ">
                             <li>
-                                <span>Topic: NBA</span>    
+                                Topic: <span>NBA</span>    
                             </li>
                             <hr>
                             <li>
-                                <span>Type of Class: Private</span>  
+                                Type of Class: <span>Private</span>  
                             </li>
                             <hr>
                             <li>
-                                <span>Total Seats: 1</span>
+                                Total Seats: <span>1</span>
                             </li>
                             <hr>
                             <li>
-                                <span>Taken: Mike</span>    
+                                Taken: <span>Mike</span>    
                             </li>
                         </ul>
                             <button type="button" class="btn btn-danger form-control" disabled>Closed</button>
@@ -318,22 +349,22 @@
                             <form action="">
                                 <ul style="list-style:none; padding: 0; margin-left: 10px; ">
                                     <li style="padding-top: 10px;" >
-                                        <span>Topic: NBA</span>    
+                                        Topic: <span>NBA</span>    
                                     </li>
                                     <hr>
                                     <li >
-                                        <span>Type of Class: Small Group</span>  
+                                        Type of Class: <span>Small Group</span>  
                                     </li>
                                     <hr>
                                     <li>
-                                        <span>Total Seats: 6</span>
+                                        Total Seats: <span>6</span>
                                     </li>
                                     <hr>
                                     <li>
-                                        <span>Taken: 2</span>
+                                        Taken: <span>2</span>
                                     </li>
                                 </ul>
-                                <button type="button" class="btn btn-primary form-control">RSVP</button>
+                                <button type="submit" class="btn btn-primary form-control">RSVP</button>
                             </form>
                         </div>
                         <hr>
@@ -347,19 +378,19 @@
                             <form action="">
                                 <ul style="list-style:none; padding: 0; margin-left: 10px; ">
                                     <li style="padding-top: 10px;" >
-                                        <span>Topic: NBA</span>    
+                                        Topic: <span>NBA</span>    
                                     </li>
                                     <hr>
                                     <li >
-                                        <span>Type of Class: Small Group</span>  
+                                        Type of Class: <span>Small Group</span>  
                                     </li>
                                     <hr>
                                     <li>
-                                        <span>Total Seats: 3</span>
+                                        Total Seats:<span>3</span>
                                     </li>
                                     <hr>
                                     <li>
-                                        <span>Taken: Mike, Jack, Tom</span>
+                                        Taken: <span>Mike, Jack, Tom</span>
                                     </li>
                                 
                                 </ul>
@@ -377,82 +408,82 @@
         </div>
     </div>
 
-         <!-- Group Lesson Modal  -->
-         <div id="calendarModal_group" class="modal fade">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title w-100" id="modalTitle">Group Lesson</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div id="modalBody" class="modal-body">
-                        <h5>Available</h5>
-                        <hr>
-                        <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
-                            <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 10px; border-radius: 1rem; margin-bottom: 10px; ">
-                                <form action="">
-                                    <ul style="list-style:none; padding: 0; margin-left: 10px; ">
-                                        <li style="padding-top: 10px;" >
-                                            <span>Topic: NBA</span>    
-                                        </li>
-                                        <hr>
-                                        <li >
-                                            <span>Type of Class: Small Group</span>  
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <span>Total Seats: 6</span>
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <span>Taken: 2</span>
-                                        </li>
-                                    </ul>
-                                    <button type="button" class="btn btn-primary form-control">RSVP</button>
-                                </form>
-                            </div>
-                            <hr>
-                        </div>
-    
-                        <hr>
-                        <h5>Registed List</h5>
-                        <hr>
-                        <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
-                            <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 10px; border-radius: 1rem; margin-bottom: 10px; ">
-                                <form action="">
-                                    <ul style="list-style:none; padding: 0; margin-left: 10px; ">
-                                        <li style="padding-top: 10px;" >
-                                            <span>Topic: NBA</span>    
-                                        </li>
-                                        <hr>
-                                        <li >
-                                            <span>Type of Class: Small Group</span>  
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <span>Total Seats: 10</span>
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <span>Taken: Mike, Jack, Tom...</span>
-                                        </li>
-                                    
-                                    </ul>
-                                    <button type="button" class="btn btn-danger form-control" disabled>Closed</button>
-                                </form>
-                            </div>
-                            <hr>
-                        </div>
-    
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div> 
-                </div>
+    <!-- Group Lesson Modal  -->
+    <div id="calendarModal_group" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="modalTitle">Group Lesson</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div id="modalBody" class="modal-body">
+                <h5>Available</h5>
+                <hr>
+                <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
+                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 10px; border-radius: 1rem; margin-bottom: 10px; ">
+                        <form action="">
+                            <ul style="list-style:none; padding: 0; margin-left: 10px; ">
+                                <li style="padding-top: 10px;" >
+                                    Topic: <span>NBA</span>    
+                                </li>
+                                <hr>
+                                <li >
+                                    Type of Class: <span>Small Group</span>  
+                                </li>
+                                <hr>
+                                <li>
+                                    Total Seats: <span>6</span>
+                                </li>
+                                <hr>
+                                <li>
+                                    Taken: <span>2</span>
+                                </li>
+                            </ul>
+                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
+                        </form>
+                    </div>
+                    <hr>
+                </div>
+
+                <hr>
+                <h5>Registed List</h5>
+                <hr>
+                <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
+                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 10px; border-radius: 1rem; margin-bottom: 10px; ">
+                        <form action="">
+                            <ul style="list-style:none; padding: 0; margin-left: 10px; ">
+                                <li style="padding-top: 10px;" >
+                                    Topic: <span>NBA</span>    
+                                </li>
+                                <hr>
+                                <li >
+                                    Type of Class: <span>Small Group</span>  
+                                </li>
+                                <hr>
+                                <li>
+                                    Total Seats: <span>10</span>
+                                </li>
+                                <hr>
+                                <li>
+                                    Taken: <span>Mike, Jack, Tom...</span>
+                                </li>
+                            
+                            </ul>
+                            <button type="button" class="btn btn-danger form-control" disabled>Closed</button>
+                        </form>
+                    </div>
+                    <hr>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div> 
         </div>
+    </div>
+    </div>
 
 
 
