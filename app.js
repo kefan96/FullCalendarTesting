@@ -16,6 +16,6 @@ app.get("/fullcalendar/main.js", (req, res) => {
     res.sendFile(__dirname + '/node_modules/fullcalendar/main.js');
 });
 
-app.listen(process.env.PORT, function(){
+app.listen(process.env.port, function(){
     console.log("app listening");
 });
