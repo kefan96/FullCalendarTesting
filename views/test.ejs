@@ -67,6 +67,7 @@
     //   add new suggestions
       $(document).ready(function () {
           let suggestion = $('#suggestion')
+          var numOfSuggestion = suggestion.children().length;
           $('#create_suggestion').on('click', function() {
               console.log(suggestion)
               let html = `<div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
@@ -92,8 +93,86 @@
                         </form>
                     </div>`;
                 suggestion.append(html);
+                numOfSuggestion += 1
+              
           })
+          console.log('numOfSuggestion', numOfSuggestion)
+          
+          
       })
+  </script>
+
+<!-- js paginator -->
+<script type="text/javascript">
+    var list = new Array();
+    var pageList = new Array();
+    var currentPage = 1;
+    var numberPerPage = 2;
+    var numberOfPages = 0;
+   
+
+function makeList() {
+    let suggestion = $('#suggestion')
+    let numOfSuggestion = suggestion.children().length;
+    for (x = 0; x < numOfSuggestion; x++)
+        list.push(suggestion.children()[x]);
+
+    numberOfPages = getNumberOfPages();
+}
+    
+function getNumberOfPages() {
+    return Math.ceil(list.length / numberPerPage);
+}
+
+function nextPage() {
+    currentPage += 1;
+    loadList();
+}
+
+function previousPage() {
+    currentPage -= 1;
+    loadList();
+}
+
+function firstPage() {
+    currentPage = 1;
+    loadList();
+}
+
+function lastPage() {
+    currentPage = numberOfPages;
+    loadList();
+}
+
+function loadList() {
+    var begin = ((currentPage - 1) * numberPerPage);
+    var end = begin + numberPerPage;
+    pageList = list.slice(begin, end);
+    
+    drawList();
+    check();
+}
+    
+function drawList() {
+    document.getElementById("suggestion").innerHTML = "";
+    for (r = 0; r < pageList.length; r++) {
+        document.getElementById("suggestion").innerHTML += pageList[r].outerHTML;
+    }
+}
+
+function check() {
+    document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
+    document.getElementById("previous").disabled = currentPage == 1 ? true : false;
+    document.getElementById("first").disabled = currentPage == 1 ? true : false;
+    document.getElementById("last").disabled = currentPage == numberOfPages ? true : false;
+}
+
+function load() {
+    makeList();
+    loadList();
+}
+    
+window.onload = load;
   </script>
 </head>
 
@@ -101,190 +180,197 @@
   <div id='calendar'></div>
 
     <!-- Availabe Slots Modal -->
-  <div id="calendarModal_available" class="modal fade">
-        <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-            <h5 class="modal-title w-100" id="modalTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+    <div id="calendarModal_available" class="modal fade">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="modalTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                
+                <div id="modalBody" class="modal-body">
+                    <h5>Suggestions</h5>
+                    <hr>
+                    <div id="suggestion" class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
+                        <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
+                            <form action="">
+                                <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
+                                    <li>
+                                        Topic: <span>NBA</span>    
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Type of Class: <span>Group</span>  
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Total Seats: <span>10</span>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Taken: <span>5</span>    
+                                    </li>
+                                </ul>
+                                <button type="submit" class="btn btn-primary form-control">RSVP</button>
+                            </form>
+                        </div>
+
+                        <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
+                            <form action="">
+                                <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
+                                    <li>
+                                        Topic: <span>Golf</span>    
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Type of Class: <span>Small Group</span>  
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Total Seats: <span>6</span>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Taken: <span>2</span>    
+                                    </li>
+                                </ul>
+                                <button type="submit" class="btn btn-primary form-control">RSVP</button>
+                            </form>
+                        </div>
+
+                        <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
+                            <form action="">
+                                <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
+                                    <li>
+                                        Topic: <span>NFL</span>    
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Type of Class: <span>Private</span>  
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Total Seats: <span>1</span>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Taken: <span>0</span>    
+                                    </li>
+                                </ul>
+                                <button type="submit" class="btn btn-primary form-control">RSVP</button>
+                            </form>
+                        </div>
+
+                        <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
+                            <form action="">
+                                <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
+                                    <li>
+                                        Topic: <span>NFL</span>    
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Type of Class: <span> Private</span>  
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Total Seats: <span> 1</span>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        Taken:<span> 0</span>    
+                                    </li>
+                                </ul>
+                                <button type="submit" class="btn btn-primary form-control">RSVP</button>
+                            </form>
+                        </div>
+                    </div>
+                        <div style="text-align:center;">
+                        <input type="button" id="first" onclick="firstPage()" value="first" />
+                        <input type="button" id="next" onclick="nextPage()" value="next" />
+                        <input type="button" id="previous" onclick="previousPage()" value="previous" />
+                        <input type="button" id="last" onclick="lastPage()" value="last" />
+                    
+                    
+                        </div>
+                    <hr>
+                    <h5>Making Suggestions</h5>
+                    <hr>
+
+                    <div class="col-md-12" style="margin:auto">
+                        <form action="" method="POST">
+                            <div class="form-group row" style="margin-top: 25px;">
+                                <div class="col-sm-4"  style="font-size: large; ">
+                                    <label for="class_topic" >Topic</label>
+                                </div>
+                                <div class="col-md-8"> 
+                                    <input type="text" class="form-control" id="topic" placeholder="Enter the topic you are interested in" minlength="2" maxlength="20" required>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-sm-4" style="font-size: large; ">
+                                    <label for="class_type" >Class Type</label>
+                                </div>
+                                <div class="col-md-8">  <select name="suggest_class_type" id="suggest_class_type" class="form-control" required>
+                                    <option value="" disabled selected hidden>Select The Class Type</option>
+                                    <option value="Group Lesson">Group Lesson</option>
+                                    <option value="Small Group">Small Group</option>
+                                    <option value="Private Lesson">Private Lesson</option>
+                                </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- <div class="form-group row">
+                                <div class="col-sm-4" style="font-size: large;">
+                                    <label for="total_seats" >Availabe Seats</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <hr> -->
+                            <button id="create_suggestion" type="submit" class="btn btn-primary pull-right" style="float: right;">Create the suggestion</button>
+                        </form>
+                    </div>
+
+                    <br>
+                    <br>
+                    <hr>
+                    <h5>Bookout</h5>
+                    <hr>
+
+                    <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
+                        <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 15px; border-radius: 1rem; margin-bottom: 10px; margin-top:5px; ">
+                            <ul style="list-style:none; padding: 0; margin-left: 10px; ">
+                                <li>
+                                    <span>Topic: NBA</span>    
+                                </li>
+                                <hr>
+                                <li>
+                                    <span>Type of Class: Small Group</span>  
+                                </li>
+                                <hr>
+                                <li>
+                                    <span>Total Seats: 6</span>
+                                </li>
+                                <hr>
+                                <li>
+                                    <span>Taken: 6</span>    
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-danger form-control" disabled>Closed</button>
+                        </div>
+                    </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div id="modalBody" class="modal-body">
-                <h5>Suggestions</h5>
-                <hr>
-                <div id="suggestion" class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
-                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
-                        <form action="">
-                            <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
-                                <li>
-                                    Topic: <span>NBA</span>    
-                                </li>
-                                <hr>
-                                <li>
-                                    Type of Class: <span>Group</span>  
-                                </li>
-                                <hr>
-                                <li>
-                                    Total Seats: <span>10</span>
-                                </li>
-                                <hr>
-                                <li>
-                                    Taken: <span>5</span>    
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
-                        </form>
-                    </div>
-
-                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
-                        <form action="">
-                            <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
-                                <li>
-                                    Topic: <span>Golf</span>    
-                                </li>
-                                <hr>
-                                <li>
-                                    Type of Class: <span>Small Group</span>  
-                                </li>
-                                <hr>
-                                <li>
-                                    Total Seats: <span>6</span>
-                                </li>
-                                <hr>
-                                <li>
-                                    Taken: <span>2</span>    
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
-                        </form>
-                    </div>
-
-                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
-                        <form action="">
-                            <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
-                                <li>
-                                    Topic: <span>NFL</span>    
-                                </li>
-                                <hr>
-                                <li>
-                                    Type of Class: <span>Private</span>  
-                                </li>
-                                <hr>
-                                <li>
-                                    Total Seats: <span>1</span>
-                                </li>
-                                <hr>
-                                <li>
-                                    Taken: <span>0</span>    
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
-                        </form>
-                    </div>
-
-                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 30px; border-radius: 1rem; margin-bottom: 10px; margin-top: 0;">
-                        <form action="">
-                            <ul style="list-style:none; padding: 0; margin-left: 10px; margin-top: 5px;">
-                                <li>
-                                    Topic: <span>NFL</span>    
-                                </li>
-                                <hr>
-                                <li>
-                                    Type of Class: <span> Private</span>  
-                                </li>
-                                <hr>
-                                <li>
-                                    Total Seats: <span> 1</span>
-                                </li>
-                                <hr>
-                                <li>
-                                    Taken:<span> 0</span>    
-                                </li>
-                            </ul>
-                            <button type="submit" class="btn btn-primary form-control">RSVP</button>
-                        </form>
-                    </div>
-                </div>
-           
-                <hr>
-                <h5>Making Suggestions</h5>
-                <hr>
-
-                <div class="col-md-12" style="margin:auto">
-                    <form action="" method="POST">
-                        <div class="form-group row" style="margin-top: 25px;">
-                            <div class="col-sm-4"  style="font-size: large; ">
-                                <label for="class_topic" >Topic</label>
-                            </div>
-                            <div class="col-md-8"> 
-                                <input type="text" class="form-control" id="topic" placeholder="Enter the topic you are interested in" minlength="2" maxlength="20" required>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="form-group row">
-                            <div class="col-sm-4" style="font-size: large; ">
-                                <label for="class_type" >Class Type</label>
-                            </div>
-                            <div class="col-md-8">  <select name="suggest_class_type" id="suggest_class_type" class="form-control" required>
-                                <option value="" disabled selected hidden>Select The Class Type</option>
-                                <option value="Group Lesson">Group Lesson</option>
-                                <option value="Small Group">Small Group</option>
-                                <option value="Private Lesson">Private Lesson</option>
-                            </select>
-                            </div>
-                        </div>
-                        <hr>
-                        <!-- <div class="form-group row">
-                            <div class="col-sm-4" style="font-size: large;">
-                                <label for="total_seats" >Availabe Seats</label>
-                            </div>
-                            <div class="col-md-8">
-                                <span></span>
-                            </div>
-                        </div>
-                        <hr> -->
-                        <button id="create_suggestion" type="submit" class="btn btn-primary pull-right" style="float: right;">Create the suggestion</button>
-                    </form>
-                </div>
-
-                <br>
-                <br>
-                <hr>
-                <h5>Bookout</h5>
-                <hr>
-
-                <div class="col-md-12 row suggestions" style="margin: 0 auto; padding: 0;">
-                    <div class="col-md-5" style="border: 1px solid #E7E7E7; padding: 0; margin: 15px; border-radius: 1rem; margin-bottom: 10px; margin-top:5px; ">
-                        <ul style="list-style:none; padding: 0; margin-left: 10px; ">
-                            <li>
-                                <span>Topic: NBA</span>    
-                            </li>
-                            <hr>
-                            <li>
-                                <span>Type of Class: Small Group</span>  
-                            </li>
-                            <hr>
-                            <li>
-                                <span>Total Seats: 6</span>
-                            </li>
-                            <hr>
-                            <li>
-                                <span>Taken: 6</span>    
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-danger form-control" disabled>Closed</button>
-                    </div>
-                </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-  </div>
+    </div>
 
 
     <!-- Private Lesson Modal  -->
