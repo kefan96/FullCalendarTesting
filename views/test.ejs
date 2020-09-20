@@ -36,16 +36,21 @@
             color: "purple"
           }
         ],
-        eventClick: function (event, jsEvent, view) {
-          $('#modalTitle').html(event.event.title);
-          $('#modalBody').html(event.event.description);
-          $('#eventUrl').attr('href', event.event.url);
+        eventClick: function (info) {
+          $('#modalTitle').html(info.event.title);
+          $('#modalBody').html(info.event.description);
+          $('#eventUrl').attr('href', info.event.url);
           $('#calendarModal').modal();
         },
       });
       calendar.render();
     });
   </script>
+  <style>
+    .fc-event-main {
+      cursor: pointer
+    }
+  </style>
 </head>
 
 <body>
