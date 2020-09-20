@@ -17,5 +17,5 @@ app.get("/fullcalendar/main.js", (req, res) => {
 });
 
 app.listen(process.env.port, function(){
-    console.log("app listening on port");
+    console.log("app listening on port" + process.env.port);
 });
